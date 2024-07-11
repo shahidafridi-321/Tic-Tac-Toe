@@ -33,12 +33,15 @@ let Players = function (name, symbol) {
 
 // GameController Module
 let GameController = (function () {
-  let playerOne = Players('shahid', 'X');
-  let playerTwo = Players('Khan', 'O');
-  let currentPlayer = playerOne;
-  let gameStatus = '';
+  let playerOne;
+  let playerTwo;
+  let currentPlayer;
+  let gameStatus = 'inactive';
 
-  let startGame = () => {
+  let startGame = (playerOneName, playerTwoName) => {
+    playerOne = Players(playerOneName, 'X');
+    playerTwo = Players(playerTwoName, 'O');
+    currentPlayer = playerOne;
     Gameboard.resetBoard();
     currentPlayer = playerOne;
     gameStatus = 'active';
@@ -103,6 +106,8 @@ let DOM = (function () {
   let btns = document.querySelectorAll('.gameboard-container button');
   let startBtn = document.querySelector('.startBtn');
   let restartBtn = document.querySelector('.restartBtn');
+  let submitBtn = document.querySelector('.submitBtn');
+
 
   // Create a single instance of domActions
   let actions = domActions();
@@ -114,9 +119,15 @@ let DOM = (function () {
     });
   });
 
-  // Add event listeners to the start and restart buttons
+  // Add event listeners to the start and restart buttons and submit btn
   startBtn.addEventListener('click', actions.startGame);
   restartBtn.addEventListener('click', actions.startGame);
+  submitBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    let playerOneName = document.getElementById('playerOne').value;
+    let playerTwoName = document.getElementById('playerTwo').value;
+    actions.startGame(playerOneName, playerTwoName);
+  });
 
   // Function to update the game board UI
   let updateBoard = () => {
@@ -125,6 +136,7 @@ let DOM = (function () {
       btn.textContent = board[index];
     });
   };
+
 
   // Return updateBoard so it can be used in domActions
   return {
@@ -138,15 +150,17 @@ function domActions() {
   let round = GameController;
 
   // Function to start the game
-  let startGame = () => {
-    round.startGame();
+  let startGame = (playerOneName, playerTwoName) => {
+    round.startGame(playerOneName, playerTwoName);
     DOM.updateBoard();
   };
 
   // Function to handle a player's move
   let playRound = (event, index) => {
-    round.makeMove(index);
-    DOM.updateBoard();
+    if (round.getStatus() === 'active') {
+      round.makeMove(index);
+      DOM.updateBoard();
+    }
   };
 
   // Return the functions to be used as event handlers

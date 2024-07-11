@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ga+Maamli&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ga+Maamli&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
   <title>Tic-Tac-Toe</title>
 </head>
+
 <body>
   <header class="header-section">
     <h1 class="main-title">Tic Tac Toe</h1>
@@ -17,6 +19,20 @@
   </header>
 
   <main class="main-content">
+    <div class="form-container">
+      <h2>Before Starting the game please enter player's name</h2>
+      <form action="" class="form">
+        <div>
+          <label for="playerOne">Player One Name</label><br>
+          <input type="text" name="name" id="playerOne" required>
+        </div>
+        <div>
+          <label for="playerTwo">Player Two Name</label><br>
+          <input type="text" name="name" id="playerTwo" required>
+        </div>
+        <button type="submit" class="submitBtn">Submit</button>
+      </form>
+    </div>
     <div class="hero-container">
       <div class="hero">
         <h2 class="intro">About</h2>
@@ -26,7 +42,7 @@
           so we can minimize the use of global scope....Happay Coding.
         </p>
       </div>
-      <div class="gameboard-container">
+      <div class="gameboard-container" id="idd">
         <button class="index" data-index="0"></button>
         <button class="index" data-index="1"></button>
         <button class="index" data-index="2"></button>
@@ -44,4 +60,5 @@
     </div>
   </main>
 </body>
+
 </html>
