@@ -1,0 +1,150 @@
+@font-face {
+  font-family: roboto-static;
+  src: url('fonts/Roboto/Roboto-Regular.ttf');
+  font-weight: normal;
+  font-size: 100%;
+}
+@font-face {
+  font-family: roboto-mono;
+  src: url('fonts/Roboto_Mono/RobotoMono-VariableFont_wght.ttf');
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-family: roboto-static, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+input,
+button,
+textarea,
+select {
+  font-size: 100%;
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+  font-size: inherit;
+  font: inherit;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+ol,
+ul {
+  list-style: none;
+  padding-inline: 0;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-areas:
+    "header header header"
+    "main-content main-content main-content";
+}
+
+.header-section {
+  grid-area: header;
+  width: 100%;
+  height: 200px;
+  background-image: url('images/header.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: grid;
+  grid-template-columns: 200px auto;
+  align-items: center;
+}
+
+.main-title {
+  font-family: "Ga Maamli";
+  color: #fff;
+  font-size: 96px;
+  text-align: center;
+}
+
+
+.logo {
+  width: 600px;
+  height: 200px;
+  aspect-ratio: 1/1;
+  order: -1;
+  transform: rotate(-20deg);
+}
+.hero-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.hero {
+  width: 400px;
+  text-align: center;
+}
+.description{
+  font-family:roboto-mono ;
+  font-size: 1.3rem;
+  color: #7dd3fc;
+  word-spacing: 20px;
+}
+
+
+.intro {
+  font-family: roboto-static;
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 4rem;
+  color: #bbf7d0;
+}
+.index {
+  transition: all 0.5s;
+  background: #86198f;
+  font-family: "Ga Maamli";
+  font-size: 4rem;
+  color: #99f6e4;
+}
+.index:hover {
+  background: #4c0519;
+  transform: skew(35deg);
+  transition: all 0.5s;
+}
+.main-content{
+  grid-area: main-content;
+  background-color: #0f172a;
+  padding: 80px 0;
+
+}
+.gameboard-container {
+  grid-area: gameboard;
+  min-width: 250px;
+  max-width: 500px;
+  aspect-ratio: 1/0.8;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  flex-grow: 3;
+  transform: skew(-25deg);
+}
+
+.gameboard-container button {
+  border-radius: 20px;
+  border: none;
+}
