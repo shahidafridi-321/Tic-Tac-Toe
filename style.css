@@ -79,6 +79,10 @@ body {
     height: 400px;
     transition: all 0.7s;
   }
+  .hero-container {
+    flex-direction: column;
+    row-gap: 50px;
+  }
 
 }
 
