@@ -60,6 +60,7 @@ body {
   grid-template-areas:
     "header header header"
     "main-content main-content main-content"
+    "footer footer footer"
     ;
 }
 
@@ -85,6 +86,9 @@ body {
   .btns-container{
     flex-direction: column;
   }
+ .players-container p {
+  display: none;
+ }
 
 }
 
@@ -104,6 +108,20 @@ body {
   transform: rotate(-20deg);
 }
 
+.main-content {
+  grid-area: main-content;
+  background-color: #0f172a;
+  padding: 10px 100px;
+  display: grid;
+  justify-content: center;
+  gap: 30px;
+  grid-template-columns: 4fr 2fr;
+  grid-template-areas: "form form"
+  "winner player-container"
+  "hero-container hero-container"
+  ". btn-container";
+
+}
 .form-container {
   text-align: center;
   display: flex;
@@ -166,6 +184,31 @@ body {
   color: #0f172a;
   transition: all 0.5s;
 }
+.winner{
+  grid-area: winner;
+}
+.winnerplayer{
+  color: #fff;
+  font-size: 2rem;
+  border: 1px  solid #7dd3fc;
+  padding: 5px 10px;
+  font-family: "Ga Maamli";
+}
+.players-container {
+  grid-area: player-container;
+  display: flex;
+  justify-content: flex-end;
+ column-gap: 40px;
+ padding-left: 20px;
+}
+.players-container p{
+  color: #f2f2f2;
+  font-size: 1.1rem;
+  border: 1px  solid #7dd3fc;
+  padding: 5px 10px;
+  border-radius: 0 10px 0 10px;
+  height: 40px;
+}
 
 .hero-container {
   display: flex;
@@ -212,19 +255,6 @@ body {
   transition: all 0.5s;
 }
 
-.main-content {
-  grid-area: main-content;
-  background-color: #0f172a;
-  padding: 10px 100px;
-  display: grid;
-  justify-content: center;
-  gap: 30px;
-  grid-template-columns: 4fr 2fr;
-  grid-template-areas: "form form"
-  "hero-container hero-container"
-  ". btn-container";
-
-}
 
 .gameboard-container {
 
@@ -265,3 +295,14 @@ body {
   color: #0f172a;
   transition: all 0.5s;
 } 
+.footer-section{
+  grid-area: footer;
+  background:#190f2a;
+  text-align: center;
+  padding: 50px 20px;
+}
+.footer-para{
+  font-size: 2rem;
+  color: #f2f2f2;
+  font-family: 'Ga Maamli';
+}

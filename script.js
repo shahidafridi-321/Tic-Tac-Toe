@@ -52,13 +52,14 @@ let GameController = (function () {
   };
 
   let makeMove = (cell) => {
+    let winner = document.querySelector('.winnerplayer');
     if (gameStatus === 'active' && Gameboard.placeMark(cell, currentPlayer.symbol)) {
       if (checkWin()) {
         gameStatus = 'won';
-        console.log(`${currentPlayer.name} has won`);
+        winner.textContent = `The Winner is ${currentPlayer.name}`;
       } else if (checkDraw()) {
         gameStatus = 'draw';
-        console.log('The game is a draw');
+        winner.textContent = `The Match is drawn`;
       } else {
         switchTurn();
       }
@@ -91,6 +92,7 @@ let GameController = (function () {
     let board = Gameboard.getBoard();
     return board.every((cell) => cell !== '');
   };
+  
 
   return {
     startGame,
@@ -107,6 +109,9 @@ let DOM = (function () {
   let startBtn = document.querySelector('.startBtn');
   let restartBtn = document.querySelector('.restartBtn');
   let submitBtn = document.querySelector('.submitBtn');
+  let playerOneNamesDisplay = document.querySelector('.playerOnepara');
+  let playerTwoNamesDisplay = document.querySelector('.playerTwopara');
+ 
 
 
   // Create a single instance of domActions
@@ -126,6 +131,8 @@ let DOM = (function () {
     event.preventDefault();
     let playerOneName = document.getElementById('playerOne').value;
     let playerTwoName = document.getElementById('playerTwo').value;
+    playerOneNamesDisplay.textContent = playerOneName;
+    playerTwoNamesDisplay.textContent= playerTwoName;
     actions.startGame(playerOneName, playerTwoName);
   });
 
